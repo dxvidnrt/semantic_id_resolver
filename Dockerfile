@@ -8,13 +8,16 @@ WORKDIR /app
 COPY . .
 
 # Install system dependencies
-# RUN apk --no-cache add build-base libffi-dev
+RUN apk update && apk add --no-cache git
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Set PYTHONPATH to the app directory
+ENV PYTHONPATH=/app
 
 # Expose the port that FastAPI will run on
 EXPOSE 8125
 
 # Command to run the FastAPI server
-CMD ["python", "semantic_id_resolver/service.py"]
+CMD ["python", "resolver_modules/service.py"]
