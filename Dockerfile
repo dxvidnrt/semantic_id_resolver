@@ -14,7 +14,7 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port that FastAPI will run on
-EXPOSE 8000
+EXPOSE 8125
 
 # Command to run the FastAPI server
 CMD ["python", "semantic_id_resolver/service.py"]
