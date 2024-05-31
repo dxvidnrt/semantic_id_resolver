@@ -3,7 +3,7 @@ from typing import Dict, Optional
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-import resolver
+from semantic_id_resolver import resolver
 
 
 class SMSRequest(BaseModel):
