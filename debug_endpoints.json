@@ -1,4 +1,4 @@
 {
-  "https://example.org/semanticIDone": "http://localhost:1234/semantic_matching_service",
-  "https://example.org/semanticIDtwo": "http://localhost:1234/semantic_matching_service"
+  "s-heppner.com/semanticID/seb_1": "http://localhost:8000/semantic_matching_service",
+  "dxvidnrt.com/semanticID/dav_1": "http://localhost:8001/semantic_matching_service"
 }
