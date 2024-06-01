@@ -48,16 +48,13 @@ class SemanticIdResolvingService:
         """
         Returns a Semantic Matching Service for a given semantic_id
         """
-        print(f"Called get_semantic_matching_service with semantic_id {request_body.semantic_id}")
         found_endpoint: Optional[str] = self.semantic_id_resolver.find_semantic_matching_service(
             semantic_id=request_body.semantic_id
         )
-        print(f"Found endpoint: {found_endpoint}")
         if found_endpoint is None:
             endpoint: str = self.fallback_semantic_matching_service_endpoint
         else:
             endpoint = found_endpoint
-        print(f"Return endpoint: {endpoint}")
         return SMSResponse(
             semantic_matching_service_endpoint=endpoint,
             meta_information={}  # Todo
