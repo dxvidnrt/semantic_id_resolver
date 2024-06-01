@@ -1,4 +1,4 @@
 {
-  "s-heppner.com/semanticID/seb_1": "http://localhost:8000/semantic_matching_service",
-  "dxvidnrt.com/semanticID/dav_1": "http://localhost:8001/semantic_matching_service"
+  "s-heppner.com/semanticID/seb_1": "http://python-semantic-matcher_1:8000",
+  "dxvidnrt.com/semanticID/dav_1": "http://python-semantic-matcher_2:8000"
 }
