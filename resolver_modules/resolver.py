@@ -28,6 +28,7 @@ class DebugSemanticMatchingServiceEndpoints:
         return DebugSemanticMatchingServiceEndpoints(debug_endpoints)
 
     def get_debug_endpoint(self, semantic_id: str) -> Optional[str]:
+        print(f"Debug endpoints: {self.debug_endpoints}")
         return self.debug_endpoints.get(semantic_id)
 
 
