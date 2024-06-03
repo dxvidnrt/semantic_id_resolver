@@ -1,4 +1,6 @@
 {
   "s-heppner.com/semanticID/seb_1": "http://python-semantic-matcher_1:8000",
-  "dxvidnrt.com/semanticID/dav_1": "http://python-semantic-matcher_2:8000"
+  "dxvidnrt.com/semanticID/dav_1": "http://python-semantic-matcher_2:8000",
+  "s-heppner.com": "http://python-semantic-matcher_1:8000",
+  "dxvidnrt.com": "http://python-semantic-matcher_2:8000"
 }

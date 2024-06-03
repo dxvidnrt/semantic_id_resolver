@@ -98,9 +98,12 @@ class SemanticIdResolver:
         :return:
         """
         # Check if there's a debug endpoint
-        debug_endpoint: Optional[str] = self.debug_endpoints.get_debug_endpoint(semantic_id=semantic_id)
-        if debug_endpoint is not None:
-            return debug_endpoint
+        parts = semantic_id.split('/')
+        while parts:
+            debug_endpoint: Optional[str] = self.debug_endpoints.get_debug_endpoint(semantic_id=('/'.join(parts)))
+            if debug_endpoint is not None:
+                return debug_endpoint
+            parts.pop()
 
         # Check for IRI and IRDI
         if is_iri_not_irdi(semantic_id) is True:
