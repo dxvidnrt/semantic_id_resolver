@@ -69,7 +69,7 @@ class SemanticIdResolvingService:
         )
 
     def overwrite_debug_endpoints(self, debug_endpoints):
-        debug_endpoints_json = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints=debug_endpoints)
+        debug_endpoints_json = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints={})
         self.semantic_id_resolver = resolver.SemanticIdResolver({}, debug_endpoints_json)
 
 
