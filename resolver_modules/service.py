@@ -82,8 +82,6 @@ if __name__ == '__main__':
     from fastapi import FastAPI
     import uvicorn
 
-    print("Start_1")
-
     config = configparser.ConfigParser()
     config.read([
         os.path.abspath(os.path.join(os.path.dirname(__file__), "../config.ini.default")),
