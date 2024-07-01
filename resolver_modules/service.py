@@ -68,12 +68,10 @@ class SemanticIdResolvingService:
             meta_information={}  # Todo
         )
 
-    def overwrite_debug_endpoints(self, debug_endpoints):
-        print(debug_endpoints)
-        """
-        debug_endpoints_json = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints={})
+    def overwrite_debug_endpoints(self, request):
+        debug_endpoints = request.json()
+        debug_endpoints_json = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints=debug_endpoints)
         self.semantic_id_resolver = resolver.SemanticIdResolver({}, debug_endpoints_json)
-        """
 
 
 if __name__ == '__main__':
