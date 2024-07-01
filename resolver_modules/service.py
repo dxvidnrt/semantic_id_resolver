@@ -69,7 +69,9 @@ class SemanticIdResolvingService:
         )
 
     def overwrite_debug_endpoints(self, request):
+        print(f"Overwrite_debug:endpoints: {request}")
         debug_endpoints = request.json()
+        print(debug_endpoints)
         debug_endpoints_json = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints=debug_endpoints)
         self.semantic_id_resolver = resolver.SemanticIdResolver({}, debug_endpoints_json)
 
@@ -79,6 +81,8 @@ if __name__ == '__main__':
     import configparser
     from fastapi import FastAPI
     import uvicorn
+
+    print("Start_1")
 
     config = configparser.ConfigParser()
     config.read([
