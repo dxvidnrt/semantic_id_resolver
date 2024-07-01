@@ -5,8 +5,6 @@ from pydantic import BaseModel
 
 from resolver_modules import resolver
 
-import json
-
 
 class SMSRequest(BaseModel):
     semantic_id: str
@@ -15,6 +13,10 @@ class SMSRequest(BaseModel):
 class SMSResponse(BaseModel):
     semantic_matching_service_endpoint: str
     meta_information: Dict
+
+
+class DebugEndpointsRequest(BaseModel):
+    debug_endpoints: Dict[str, str]
 
 
 class SemanticIdResolvingService:
@@ -68,12 +70,10 @@ class SemanticIdResolvingService:
             meta_information={}  # Todo
         )
 
-    def overwrite_debug_endpoints(self, request):
-        print(f"Overwrite_debug:endpoints: {request}")
-        debug_endpoints = request.json()
-        print(debug_endpoints)
-        debug_endpoints_json = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints=debug_endpoints)
-        self.semantic_id_resolver = resolver.SemanticIdResolver({}, debug_endpoints_json)
+    def overwrite_debug_endpoints(self, debug_endpoints_request: DebugEndpointsRequest):
+        debug_endpoints = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints=
+                                                                         debug_endpoints_request.debug_endpoints)
+        self.semantic_id_resolver = resolver.SemanticIdResolver({}, debug_endpoints)
 
 
 if __name__ == '__main__':
