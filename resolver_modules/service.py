@@ -5,6 +5,8 @@ from pydantic import BaseModel
 
 from resolver_modules import resolver
 
+import json
+
 
 class SMSRequest(BaseModel):
     semantic_id: str
@@ -20,6 +22,7 @@ class SemanticIdResolvingService:
     A Service, resolving semantic_ids to their respective
     Semantic Matching Service
     """
+
     def __init__(
             self,
             endpoint: str,
@@ -36,6 +39,11 @@ class SemanticIdResolvingService:
             "/get_semantic_matching_service",
             self.get_semantic_matching_service,
             methods=["GET"]
+        )
+        self.router.add_api_route(
+            "/overwrite_debug_endpoints",
+            self.overwrite_debug_endpoints,
+            methods=["POST"]
         )
         self.endpoint: str = endpoint
         self.fallback_semantic_matching_service_endpoint: str = fallback_semantic_matching_service_endpoint
@@ -59,6 +67,10 @@ class SemanticIdResolvingService:
             semantic_matching_service_endpoint=endpoint,
             meta_information={}  # Todo
         )
+
+    def overwrite_debug_endpoints(self, debug_endpoints):
+        debug_endpoints = resolver.DebugSemanticMatchingServiceEndpoints(debug_endpoints=debug_endpoints)
+        self.semantic_id_resolver = resolver.SemanticIdResolver(IRDI_MATCHER_DICT, debug_endpoints)
 
 
 if __name__ == '__main__':
